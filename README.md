@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Python for Humans
+
+A minimalist website demonstrating key UI/UX principles through clean, visual examples. This site is designed to support presentations and educational content about design principles in code.
+
+## Purpose
+
+This website showcases 8 fundamental UI/UX principles with clear visual comparisons between good and bad examples. Each principle is demonstrated through interactive examples that are suitable for screenshots and live demonstrations.
+
+## Principles Covered
+
+1. **Scanning Patterns** - How users' eyes flow across the screen (Z-pattern)
+2. **Labeling & Naming** - Clear, specific labels vs vague ones
+3. **Visual Hierarchy** - Typography, spacing, and alignment
+4. **Progressive Disclosure** - Hiding complexity until needed
+5. **Forms** - Clean forms with good defaults and guidance
+6. **Design Systems** - Consistent, repeatable UI elements
+7. **Simplicity** - Less is more in interface design
+8. **Standardization** - Unified spacing, colors, and alignment
+
+## Tech Stack
+
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type safety and better development experience
+- **TailwindCSS** - Utility-first CSS framework
+- **Lucide React** - Customizable icons
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Open your browser:**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Responsive Design** - Works on desktop and mobile devices
+- **Interactive Examples** - Toggle between good and bad examples
+- **Clean Navigation** - Easy to navigate between principles
+- **Screenshot-Friendly** - Designed for presentation use
+- **Minimal Dependencies** - Lightweight and fast
 
-## Learn More
+## Design Philosophy
 
-To learn more about Next.js, take a look at the following resources:
+The site follows a minimalist design approach inspired by Notion:
+- Clean sans-serif typography
+- Lots of white space
+- Soft borders and subtle shadows
+- Neutral color palette
+- Light hover effects
+- No branding or logos
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Usage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Each page demonstrates a specific UI principle with:
+- Clear explanations
+- Visual examples
+- Interactive toggles between good/bad examples
+- Best practices and guidelines
+- Comparison tables where applicable
 
-## Deploy on Vercel
+## Customization
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The site is built with modularity in mind:
+- Each principle is its own page component
+- Consistent styling through TailwindCSS classes
+- Easy to add new principles or modify existing ones
+- Reusable components for common patterns
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Screenshot Tips
+
+- Use the toggle buttons to show both good and bad examples
+- The site is optimized for screenshots with clean backgrounds
+- Each principle page is self-contained and presentation-ready
+- Consider using browser dev tools to adjust viewport size for different screenshots
+
+## Contributing
+
+This is a demonstration project, but feel free to:
+- Add new UI principles
+- Improve existing examples
+- Fix any issues
+- Suggest better visual comparisons
+
+## License
+
+This project is open source and available under the MIT License.
