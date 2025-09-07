@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 export default function Standardization() {
   const [showInconsistent, setShowInconsistent] = useState(false)
+  const [showPythonCode, setShowPythonCode] = useState(false)
 
   return (
     <div className="space-y-12">
@@ -15,12 +16,18 @@ export default function Standardization() {
       </div>
 
       <div className="space-y-8">
-        <div className="flex justify-center">
+        <div className="flex justify-center space-x-4">
           <button
             onClick={() => setShowInconsistent(!showInconsistent)}
             className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
           >
             {showInconsistent ? 'Show Consistent Design' : 'Show Inconsistent Design'}
+          </button>
+          <button
+            onClick={() => setShowPythonCode(true)}
+            className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+          >
+            View Python Code
           </button>
         </div>
 
@@ -310,6 +317,112 @@ export default function Standardization() {
           </div>
         </div>
       </div>
+
+      {/* Python Code Modal */}
+      {showPythonCode && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-8 max-w-4xl w-full mx-4 max-h-[80vh] overflow-y-auto">
+            <div className="flex justify-between items-start mb-6">
+              <h3 className="text-2xl font-bold text-gray-900">Python Code: Standardization</h3>
+              <button
+                onClick={() => setShowPythonCode(false)}
+                className="text-gray-400 hover:text-gray-600 text-2xl"
+              >
+                ×
+              </button>
+            </div>
+            
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-3">Good: Consistent Formatting</h4>
+                <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
+                  <pre className="text-sm font-mono">
+{`# Consistent formatting with black
+def calculate_total(items: List[Item]) -> float:
+    """Calculate the total price of items."""
+    total = 0.0
+    for item in items:
+        total += item.price * item.quantity
+    return total
+
+def process_order(order: Order) -> OrderResult:
+    """Process a customer order."""
+    validated_items = validate_items(order.items)
+    total = calculate_total(validated_items)
+    return OrderResult(items=validated_items, total=total)
+
+def send_confirmation_email(order: Order) -> bool:
+    """Send order confirmation email."""
+    email_content = format_order_email(order)
+    return email_service.send(order.customer.email, email_content)
+
+# Consistent naming, spacing, and structure
+class OrderProcessor:
+    def __init__(self, email_service: EmailService):
+        self.email_service = email_service
+    
+    def process(self, order: Order) -> OrderResult:
+        """Main processing method."""
+        result = process_order(order)
+        self.email_service.send_confirmation(order)
+        return result`}
+                  </pre>
+                </div>
+                <p className="text-sm text-gray-600 mt-3">
+                  Code follows consistent formatting, naming conventions, and structure. 
+                  Like a standardized design system, it creates predictability and reduces cognitive load.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-3">Poor: Inconsistent Formatting</h4>
+                <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
+                  <pre className="text-sm font-mono">
+{`# Inconsistent formatting and style
+def calculateTotal(items):  # Different naming convention
+    total=0  # No spaces around operators
+    for item in items:
+        total+=item.price*item.quantity  # No spaces
+    return total
+
+def processOrder(order):  # Different naming
+    validatedItems=validateItems(order.items)  # Different naming
+    total=calculateTotal(validatedItems)  # Inconsistent spacing
+    return OrderResult(items=validatedItems,total=total)  # No spaces
+
+def sendConfirmationEmail(order):  # Different naming
+    emailContent=formatOrderEmail(order)  # Different naming
+    return emailService.send(order.customer.email,emailContent)  # No spaces
+
+# Inconsistent class structure
+class OrderProcessor:
+    def __init__(self,emailService):  # No spaces
+        self.emailService=emailService  # Different naming
+    
+    def Process(self,order):  # Different method naming
+        result=processOrder(order)  # Inconsistent spacing
+        self.emailService.sendConfirmation(order)  # Different naming
+        return result`}
+                  </pre>
+                </div>
+                <p className="text-sm text-gray-600 mt-3">
+                  Code has inconsistent formatting, naming conventions, and spacing. 
+                  Like an inconsistent design system, it creates visual noise and makes the code harder to read.
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex justify-end mt-8">
+              <button
+                onClick={() => setShowPythonCode(false)}
+                className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

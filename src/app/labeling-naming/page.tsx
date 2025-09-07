@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 export default function LabelingNaming() {
   const [showBadExample, setShowBadExample] = useState(false)
+  const [showPythonCode, setShowPythonCode] = useState(false)
 
   return (
     <div className="space-y-12">
@@ -15,12 +16,18 @@ export default function LabelingNaming() {
       </div>
 
       <div className="space-y-8">
-        <div className="flex justify-center">
+        <div className="flex justify-center space-x-4">
           <button
             onClick={() => setShowBadExample(!showBadExample)}
             className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
           >
             {showBadExample ? 'Show Good Examples' : 'Show Bad Examples'}
+          </button>
+          <button
+            onClick={() => setShowPythonCode(true)}
+            className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+          >
+            View Python Code
           </button>
         </div>
 
@@ -197,6 +204,84 @@ export default function LabelingNaming() {
           </div>
         </div>
       </div>
+
+      {/* Python Code Modal */}
+      {showPythonCode && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-8 max-w-4xl w-full mx-4 max-h-[80vh] overflow-y-auto">
+            <div className="flex justify-between items-start mb-6">
+              <h3 className="text-2xl font-bold text-gray-900">Python Code: Clear Function Names</h3>
+              <button
+                onClick={() => setShowPythonCode(false)}
+                className="text-gray-400 hover:text-gray-600 text-2xl"
+              >
+                ×
+              </button>
+            </div>
+            
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-3">Good: Descriptive Names</h4>
+                <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
+                  <pre className="text-sm font-mono">
+{`# Clear, descriptive function names with simple types
+from datetime import datetime
+
+def increment_by_two(value: int) -> int:
+    return value + 2
+
+def calculate_user_age(birth_date: datetime) -> int:
+    return (datetime.now() - birth_date).days // 365
+
+def validate_email_address(email: str) -> bool:
+    return "@" in email and "." in email.split("@")[1]
+
+def format_currency(amount: float, currency: str = "USD") -> str:
+    return f"{currency} {amount:.2f}"`}
+                  </pre>
+                </div>
+                <p className="text-sm text-gray-600 mt-3">
+                  Function names clearly describe what they do, making the code self-documenting 
+                  and easy to understand at a glance.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-3">Poor: Vague Names</h4>
+                <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
+                  <pre className="text-sm font-mono">
+{`# Unclear, vague function names
+def do(x):
+    return x + 2
+
+def calc(d):
+    return (datetime.now() - d).days // 365
+
+def check(e):
+    return "@" in e and "." in e.split("@")[1]
+
+def format(a, c="USD"):
+    return f"{c} {a:.2f}"`}
+                  </pre>
+                </div>
+                <p className="text-sm text-gray-600 mt-3">
+                  Short, cryptic names require mental effort to understand. Like vague form labels, 
+                  they create cognitive load and potential confusion.
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex justify-end mt-8">
+              <button
+                onClick={() => setShowPythonCode(false)}
+                className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

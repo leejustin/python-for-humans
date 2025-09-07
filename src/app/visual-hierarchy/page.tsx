@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 export default function VisualHierarchy() {
   const [showBadExample, setShowBadExample] = useState(false)
+  const [showPythonCode, setShowPythonCode] = useState(false)
 
   return (
     <div className="space-y-12">
@@ -15,12 +16,18 @@ export default function VisualHierarchy() {
       </div>
 
       <div className="space-y-8">
-        <div className="flex justify-center">
+        <div className="flex justify-center space-x-4">
           <button
             onClick={() => setShowBadExample(!showBadExample)}
             className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
           >
             {showBadExample ? 'Show Good Hierarchy' : 'Show Poor Hierarchy'}
+          </button>
+          <button
+            onClick={() => setShowPythonCode(true)}
+            className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+          >
+            View Python Code
           </button>
         </div>
 
@@ -202,6 +209,79 @@ export default function VisualHierarchy() {
           </div>
         </div>
       </div>
+
+      {/* Python Code Modal */}
+      {showPythonCode && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-8 max-w-4xl w-full mx-4 max-h-[80vh] overflow-y-auto">
+            <div className="flex justify-between items-start mb-6">
+              <h3 className="text-2xl font-bold text-gray-900">Python Code: Visual Hierarchy</h3>
+              <button
+                onClick={() => setShowPythonCode(false)}
+                className="text-gray-400 hover:text-gray-600 text-2xl"
+              >
+                ×
+              </button>
+            </div>
+            
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-3">Good: Group steps within a function</h4>
+                <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
+                  <pre className="text-sm font-mono">
+{`from typing import Dict
+
+def handle_checkout(payload: Dict) -> Dict:
+    """One unit of logic with clear step grouping."""
+    # validate input (step 1)
+    if 'items' not in payload or not payload['items']:
+        return {'status': 'error', 'message': 'no items'}
+
+    # transform (step 2)
+    total = sum(item['price'] * item.get('qty', 1) for item in payload['items'])
+
+    # return (step 3)
+    return {'status': 'ok', 'total': round(total, 2)}`}
+                  </pre>
+                </div>
+                <p className="text-sm text-gray-600 mt-3">
+                  Blank lines separate validation, transformation, and return. This creates visual hierarchy inside a single unit of logic.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-3">Poor: No grouping inside the function</h4>
+                <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
+                  <pre className="text-sm font-mono">
+{`from typing import Dict
+
+def handle_checkout(payload: Dict) -> Dict:
+    # validation, transform, and return mashed together
+    if 'items' not in payload or not payload['items']:
+        return {'status': 'error', 'message': 'no items'}
+    total = 0
+    for item in payload['items']:
+        total += item['price'] * item.get('qty', 1)
+    return {'status': 'ok', 'total': round(total, 2)}`}
+                  </pre>
+                </div>
+                <p className="text-sm text-gray-600 mt-3">
+                  With no spacing between conceptual steps, the function is harder to scan and reason about.
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex justify-end mt-8">
+              <button
+                onClick={() => setShowPythonCode(false)}
+                className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 export default function Simplicity() {
   const [showOverdesigned, setShowOverdesigned] = useState(false)
+  const [showPythonCode, setShowPythonCode] = useState(false)
 
   return (
     <div className="space-y-12">
@@ -15,12 +16,18 @@ export default function Simplicity() {
       </div>
 
       <div className="space-y-8">
-        <div className="flex justify-center">
+        <div className="flex justify-center space-x-4">
           <button
             onClick={() => setShowOverdesigned(!showOverdesigned)}
             className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
           >
             {showOverdesigned ? 'Show Simple Design' : 'Show Overdesigned Example'}
+          </button>
+          <button
+            onClick={() => setShowPythonCode(true)}
+            className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+          >
+            View Python Code
           </button>
         </div>
 
@@ -268,6 +275,93 @@ export default function Simplicity() {
           </div>
         </div>
       </div>
+
+      {/* Python Code Modal */}
+      {showPythonCode && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-8 max-w-4xl w-full mx-4 max-h-[80vh] overflow-y-auto">
+            <div className="flex justify-between items-start mb-6">
+              <h3 className="text-2xl font-bold text-gray-900">Python Code: Simplicity Over Cleverness</h3>
+              <button
+                onClick={() => setShowPythonCode(false)}
+                className="text-gray-400 hover:text-gray-600 text-2xl"
+              >
+                ×
+              </button>
+            </div>
+            
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-3">Good: Clear and Simple</h4>
+                <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
+                  <pre className="text-sm font-mono">
+{`# Simple, readable approach
+def filter_high_value_items(data):
+    """Filter items with high values."""
+    filtered = []
+    for item in data:
+        if item.price > 10 and item.quantity < 20:
+            filtered.append(item)
+    return filtered
+
+# Clear variable names and straightforward logic
+def calculate_total(items):
+    """Calculate total price of items."""
+    total = 0
+    for item in items:
+        total += item.price * item.quantity
+    return total
+
+# Simple function composition
+def process_order(order):
+    """Process a customer order."""
+    valid_items = filter_high_value_items(order.items)
+    total = calculate_total(valid_items)
+    return {'items': valid_items, 'total': total}`}
+                  </pre>
+                </div>
+                <p className="text-sm text-gray-600 mt-3">
+                  Code is straightforward and easy to follow. Each function has a single responsibility 
+                  and clear purpose, making it maintainable and debuggable.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-3">Poor: Clever but Complex</h4>
+                <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
+                  <pre className="text-sm font-mono">
+{`# Clever but hard to understand
+def f(d): return [x for x in d if x[0] > 10 and x[1] < 20]
+
+# One-liner that does everything
+def p(o): return {'i': [x for x in o['i'] if x[0] > 10 and x[1] < 20], 't': sum(x[0] * x[1] for x in o['i'] if x[0] > 10 and x[1] < 20)}
+
+# Overly clever with nested comprehensions
+result = {k: [v for v in [x for x in data if x[0] > 10 and x[1] < 20] if v[2] == k] for k in set(x[2] for x in data)}
+
+# Magic numbers and cryptic logic
+def process(d):
+    return {i: sum(j[0]*j[1] for j in d if j[0] > 10 and j[1] < 20 and j[2] == i) for i in set(j[2] for j in d)}`}
+                  </pre>
+                </div>
+                <p className="text-sm text-gray-600 mt-3">
+                  Code is clever but hard to read and maintain. Like overdesigned UI, it prioritizes 
+                  cleverness over usability and clarity.
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex justify-end mt-8">
+              <button
+                onClick={() => setShowPythonCode(false)}
+                className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

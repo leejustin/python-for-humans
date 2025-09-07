@@ -7,6 +7,7 @@ export default function ProgressiveDisclosure() {
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set())
   const [showModal, setShowModal] = useState(false)
   const [showBadExample, setShowBadExample] = useState(false)
+  const [showPythonCode, setShowPythonCode] = useState(false)
 
   const toggleSection = (sectionId: string) => {
     const newExpanded = new Set(expandedSections)
@@ -28,12 +29,18 @@ export default function ProgressiveDisclosure() {
       </div>
 
       <div className="space-y-8">
-        <div className="flex justify-center">
+        <div className="flex justify-center space-x-4">
           <button
             onClick={() => setShowBadExample(!showBadExample)}
             className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
           >
             {showBadExample ? 'Show Good Examples' : 'Show Bad Examples'}
+          </button>
+          <button
+            onClick={() => setShowPythonCode(true)}
+            className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+          >
+            View Python Code
           </button>
         </div>
 
@@ -357,6 +364,99 @@ export default function ProgressiveDisclosure() {
           </div>
         </div>
       </div>
+
+      {/* Python Code Modal */}
+      {showPythonCode && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-8 max-w-4xl w-full mx-4 max-h-[80vh] overflow-y-auto">
+            <div className="flex justify-between items-start mb-6">
+              <h3 className="text-2xl font-bold text-gray-900">Python Code: Progressive Disclosure</h3>
+              <button
+                onClick={() => setShowPythonCode(false)}
+                className="text-gray-400 hover:text-gray-600 text-2xl"
+              >
+                ×
+              </button>
+            </div>
+            
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-3">Good: Decorator Pattern</h4>
+                <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
+                  <pre className="text-sm font-mono">
+{`# Simple interface - complexity hidden
+@with_timer
+@with_logging
+def process_data(data):
+    return data.upper()
+
+# Implementation details hidden in decorators
+def with_timer(func):
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        print(f"Time: {time.time() - start:.2f}s")
+        return result
+    return wrapper
+
+def with_logging(func):
+    def wrapper(*args, **kwargs):
+        print(f"Calling {func.__name__}")
+        result = func(*args, **kwargs)
+        print(f"Completed {func.__name__}")
+        return result
+    return wrapper`}
+                  </pre>
+                </div>
+                <p className="text-sm text-gray-600 mt-3">
+                  The main function is simple and clean. Complex functionality (timing, logging) 
+                  is hidden in decorators, revealed only when needed.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-3">Poor: Everything Exposed</h4>
+                <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
+                  <pre className="text-sm font-mono">
+{`# Everything visible at once - overwhelming
+def process_data(data):
+    # Timing code
+    start_time = time.time()
+    
+    # Logging code
+    print(f"Calling process_data with {len(data)} items")
+    
+    # Main logic
+    result = data.upper()
+    
+    # More logging
+    print(f"Completed process_data")
+    
+    # More timing
+    end_time = time.time()
+    print(f"Time: {end_time - start_time:.2f}s")
+    
+    return result`}
+                  </pre>
+                </div>
+                <p className="text-sm text-gray-600 mt-3">
+                  All implementation details are mixed together, making it hard to focus on 
+                  the core logic. Like a cluttered UI, it overwhelms the reader.
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex justify-end mt-8">
+              <button
+                onClick={() => setShowPythonCode(false)}
+                className="px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
