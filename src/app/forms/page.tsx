@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import CodeBlock from '@/components/CodeBlock'
 
 export default function Forms() {
   const [formData, setFormData] = useState({
@@ -46,8 +47,8 @@ export default function Forms() {
           // Good Form Example
           <div className="bg-white border-2 border-green-200 rounded-lg p-8 space-y-6">
           <div className="text-center">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Well-Designed Form</h2>
-            <p className="text-gray-600">Clear structure, helpful guidance, and good defaults</p>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">PyCon Talk Feedback</h2>
+            <p className="text-gray-600">Help improve this session with clear, structured feedback</p>
           </div>
           
           <div className="max-w-2xl mx-auto">
@@ -55,7 +56,7 @@ export default function Forms() {
               {/* Personal Information Section */}
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">
-                  Personal Information
+                  Attendee Information
                 </h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -69,7 +70,7 @@ export default function Forms() {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      placeholder="John Smith"
+                      placeholder="Justin Lee"
                       required
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                     />
@@ -85,7 +86,7 @@ export default function Forms() {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      placeholder="john@company.com"
+                      placeholder="hello@leejustin.com"
                       required
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                     />
@@ -96,13 +97,13 @@ export default function Forms() {
               {/* Company Information Section */}
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">
-                  Company Information
+                  Affiliation & Experience
                 </h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                      Company name
+                      Organization (optional)
                     </label>
                     <input
                       type="text"
@@ -110,7 +111,7 @@ export default function Forms() {
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
-                      placeholder="Acme Corporation"
+                      placeholder="Awesome Company"
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                     />
                     <p className="text-xs text-gray-500 mt-1">Leave blank if you&apos;re an individual</p>
@@ -118,7 +119,7 @@ export default function Forms() {
                   
                   <div>
                     <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">
-                      Your role
+                      Experience with Python
                     </label>
                     <select
                       id="role"
@@ -127,27 +128,26 @@ export default function Forms() {
                       onChange={handleInputChange}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                     >
-                      <option value="">Select your role</option>
-                      <option value="designer">Designer</option>
-                      <option value="developer">Developer</option>
-                      <option value="product-manager">Product Manager</option>
-                      <option value="founder">Founder</option>
-                      <option value="other">Other</option>
+                      <option value="">Select your experience</option>
+                      <option value="beginner">Beginner</option>
+                      <option value="intermediate">Intermediate</option>
+                      <option value="advanced">Advanced</option>
+                      <option value="expert">Expert</option>
                     </select>
                   </div>
                 </div>
               </div>
 
-              {/* Project Details Section */}
+              {/* Session Feedback Section */}
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-gray-900 border-b border-gray-200 pb-2">
-                  Project Details
+                  Session Feedback
                 </h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-2">
-                      Project budget
+                      Overall rating
                     </label>
                     <select
                       id="budget"
@@ -156,18 +156,18 @@ export default function Forms() {
                       onChange={handleInputChange}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                     >
-                      <option value="">Select budget range</option>
-                      <option value="under-5k">Under $5,000</option>
-                      <option value="5k-10k">$5,000 - $10,000</option>
-                      <option value="10k-25k">$10,000 - $25,000</option>
-                      <option value="25k-50k">$25,000 - $50,000</option>
-                      <option value="over-50k">Over $50,000</option>
+                      <option value="">Select rating</option>
+                      <option value="1">1 - Poor</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5 - Excellent</option>
                     </select>
                   </div>
                   
                   <div>
                     <label htmlFor="timeline" className="block text-sm font-medium text-gray-700 mb-2">
-                      Timeline
+                      Most valuable section
                     </label>
                     <select
                       id="timeline"
@@ -176,19 +176,22 @@ export default function Forms() {
                       onChange={handleInputChange}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                     >
-                      <option value="">Select timeline</option>
-                      <option value="asap">ASAP</option>
-                      <option value="1-month">Within 1 month</option>
-                      <option value="3-months">Within 3 months</option>
-                      <option value="6-months">Within 6 months</option>
-                      <option value="flexible">Flexible</option>
+                      <option value="">Select a section</option>
+                      <option value="scanning">Scanning patterns</option>
+                      <option value="labeling">Labeling & naming</option>
+                      <option value="hierarchy">Visual hierarchy</option>
+                      <option value="disclosure">Progressive disclosure</option>
+                      <option value="forms">Forms as interfaces</option>
+                      <option value="design-systems">Design systems</option>
+                      <option value="simplicity">Simplicity over cleverness</option>
+                      <option value="standardization">Standardization</option>
                     </select>
                   </div>
                 </div>
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Project description
+                    Feedback (what worked, what could be clearer?)
                   </label>
                   <textarea
                     id="message"
@@ -196,16 +199,14 @@ export default function Forms() {
                     value={formData.message}
                     onChange={handleInputChange}
                     rows={4}
-                    placeholder="Tell us about your project goals, requirements, and any specific needs..."
+                    placeholder="Share any takeaways, suggestions, or questions from the session..."
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-vertical"
                   />
-                  <p className="text-xs text-gray-500 mt-1">
-                    The more details you provide, the better we can help you
-                  </p>
+                  <p className="text-xs text-gray-500 mt-1">Thanks for helping improve the talk</p>
                 </div>
               </div>
 
-              {/* Newsletter Signup */}
+              {/* Updates opt-in */}
               <div className="flex items-start space-x-3">
                 <input
                   type="checkbox"
@@ -217,11 +218,9 @@ export default function Forms() {
                 />
                 <div>
                   <label htmlFor="newsletter" className="text-sm font-medium text-gray-700">
-                    Subscribe to our newsletter
+                    Send me resources and example code after the talk
                   </label>
-                  <p className="text-xs text-gray-500 mt-1">
-                    Get design tips, case studies, and industry insights delivered to your inbox
-                  </p>
+                  <p className="text-xs text-gray-500 mt-1">A short follow‑up with links—no spam</p>
                 </div>
               </div>
 
@@ -231,11 +230,9 @@ export default function Forms() {
                   type="submit"
                   className="w-full bg-gray-900 text-white py-3 px-6 rounded-lg hover:bg-gray-800 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors font-medium"
                 >
-                  Send project inquiry
+                  Submit feedback
                 </button>
-                <p className="text-xs text-gray-500 text-center mt-2">
-                  We&apos;ll respond within 24 hours
-                </p>
+                <p className="text-xs text-gray-500 text-center mt-2">Thank you for attending PyCon</p>
               </div>
             </form>
           </div>
@@ -269,7 +266,7 @@ export default function Forms() {
                   <div>
                     <input
                       type="text"
-                      placeholder="Phone"
+                      placeholder="Organization"
                       className="w-full px-2 py-1 border border-gray-300 rounded text-sm"
                     />
                   </div>
@@ -278,18 +275,25 @@ export default function Forms() {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <select className="w-full px-2 py-1 border border-gray-300 rounded text-sm">
-                      <option>Budget</option>
-                      <option>Low</option>
-                      <option>Medium</option>
-                      <option>High</option>
+                      <option>Rating</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
                     </select>
                   </div>
                   <div>
                     <select className="w-full px-2 py-1 border border-gray-300 rounded text-sm">
-                      <option>Timeline</option>
-                      <option>ASAP</option>
-                      <option>1 month</option>
-                      <option>3 months</option>
+                      <option>Most valuable section</option>
+                      <option>Scanning patterns</option>
+                      <option>Labeling & naming</option>
+                      <option>Visual hierarchy</option>
+                      <option>Progressive disclosure</option>
+                      <option>Forms as interfaces</option>
+                      <option>Design systems</option>
+                      <option>Simplicity over cleverness</option>
+                      <option>Standardization</option>
                     </select>
                   </div>
                 </div>
@@ -419,6 +423,18 @@ export default function Forms() {
               />
               <p className="text-xs text-green-600 mt-1">✓ Email address looks good</p>
             </div>
+          </div>
+        </div>
+
+        {/* Python examples loaded from files */}
+        <div className="bg-white border-2 border-gray-200 rounded-lg p-8 space-y-6">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Python Examples</h2>
+            <p className="text-gray-600">Function signatures as form-like affordances</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <CodeBlock src="/code/forms_good.py" title="/public/code/forms_good.py" />
+            <CodeBlock src="/code/forms_poor.py" title="/public/code/forms_poor.py" />
           </div>
         </div>
       </div>

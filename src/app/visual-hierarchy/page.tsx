@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import CodeBlock from '@/components/CodeBlock'
 
 export default function VisualHierarchy() {
   const [showBadExample, setShowBadExample] = useState(false)
@@ -47,9 +48,9 @@ export default function VisualHierarchy() {
                     Building Better User Interfaces
                   </h1>
                   <div className="flex items-center space-x-4 text-sm text-gray-500">
-                    <span>By Sarah Chen</span>
+                    <span>By Justin Lee</span>
                     <span>•</span>
-                    <span>March 15, 2024</span>
+                    <span>2025-09-20</span>
                     <span>•</span>
                     <span>8 min read</span>
                   </div>
@@ -57,8 +58,9 @@ export default function VisualHierarchy() {
 
                 <div className="prose prose-lg max-w-none">
                   <p className="text-xl text-gray-600 leading-relaxed">
-                    Creating interfaces that users love requires understanding how people process information visually. 
-                    Good visual hierarchy makes content scannable and digestible.
+                    In a team setting, your Python code is more than instructions for machines—it&apos;s an interface your 
+                    teammates will interact with, maintain, and extend. This talk draws on UI/UX design principles to help you 
+                    write Python that&apos;s more discoverable, readable, and user‑friendly.
                   </p>
 
                   <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">
@@ -66,8 +68,9 @@ export default function VisualHierarchy() {
                   </h2>
                   
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    Typography is the foundation of visual hierarchy. By varying font sizes, weights, and spacing, 
-                    you can guide users through your content in a logical, intuitive way.
+                    Over time, some of the biggest time sinks in collaborative development come from code that&apos;s hard to revisit—
+                    whether it was written by a teammate or by you. We&apos;ll use design-inspired practices to make code easier to return to, 
+                    share, and scale across teams.
                   </p>
 
                   <h3 className="text-xl font-semibold text-gray-900 mt-6 mb-3">
@@ -75,15 +78,18 @@ export default function VisualHierarchy() {
                   </h3>
                   
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    Larger, bolder text naturally draws attention first. Use this to establish your content&apos;s 
-                    information architecture and help users quickly identify what&apos;s most important.
+                    Concepts from interface design—visual hierarchy, layout, progressive disclosure, and affordances—can guide how you 
+                    name functions, structure files, and write signatures that act like intuitive forms. Readers scan code top‑down like 
+                    users scan a page.
                   </p>
 
                   <ul className="list-disc list-inside space-y-2 text-gray-700">
-                    <li>Headlines should be significantly larger than body text</li>
-                    <li>Use bold or semibold weights for emphasis</li>
-                    <li>Maintain consistent sizing across similar elements</li>
-                    <li>Consider line height for readability</li>
+                    <li>Top-level structure like layout: __init__.py, __main__, and grouping logic improve scannability</li>
+                    <li>Naming is labeling: clear, specific names aid navigation and tool‑assisted discovery</li>
+                    <li>Vertical spacing/indentation mimic visual grouping and signal intent</li>
+                    <li>Decorators and type hints act like collapsible sections and labeled fields</li>
+                    <li>black, ruff, and Pylance enforce consistency at scale (like accessibility checkers)</li>
+                    <li>Apply design restraint—cleverness often ages poorly</li>
                   </ul>
 
                   <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">
@@ -91,15 +97,15 @@ export default function VisualHierarchy() {
                   </h2>
                   
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    White space is not empty space—it&apos;s a powerful design tool. Proper spacing creates breathing 
-                    room and helps users focus on individual elements.
+                    This isn&apos;t just about a style guide—it&apos;s a mindset: treat your codebase like a user experience so others can read, 
+                    trust, and extend it—just like good UI.
                   </p>
 
                   <blockquote className="border-l-4 border-blue-500 pl-6 py-2 bg-blue-50 rounded-r-lg">
                     <p className="text-lg text-gray-700 italic">
-                      &quot;White space is to be regarded as an active element, not a passive background.&quot;
+                      No design background needed—just curiosity, empathy, and the desire to write Python you won&apos;t dread revisiting.
                     </p>
-                    <cite className="text-sm text-gray-500 mt-2 block">— Jan Tschichold</cite>
+                    <cite className="text-sm text-gray-500 mt-2 block">— Talk Overview</cite>
                   </blockquote>
                 </div>
               </article>
@@ -118,10 +124,10 @@ export default function VisualHierarchy() {
               <article className="space-y-2">
                 <header className="space-y-2">
                   <h1 className="text-lg font-normal text-gray-700">
-                    building better user interfaces
+                    Building Better User Interfaces
                   </h1>
                   <div className="text-sm text-gray-400">
-                    by sarah chen march 15 2024 8 min read
+                    By Justin Lee 2025-09-20 8 min read
                   </div>
                 </header>
 
@@ -132,7 +138,7 @@ export default function VisualHierarchy() {
                   </p>
 
                   <h2 className="text-lg font-normal text-gray-600 mt-4">
-                    the power of typography
+                    The Power of Typography
                   </h2>
                   
                   <p className="text-base text-gray-600">
@@ -141,7 +147,7 @@ export default function VisualHierarchy() {
                   </p>
 
                   <h3 className="text-base font-normal text-gray-600 mt-2">
-                    size and weight
+                    Size and Weight
                   </h3>
                   
                   <p className="text-base text-gray-600">
@@ -157,7 +163,7 @@ export default function VisualHierarchy() {
                   </ul>
 
                   <h2 className="text-lg font-normal text-gray-600 mt-4">
-                    spacing and alignment
+                    Spacing and Alignment
                   </h2>
                   
                   <p className="text-base text-gray-600">
@@ -227,23 +233,7 @@ export default function VisualHierarchy() {
             <div className="space-y-6">
               <div>
                 <h4 className="text-lg font-semibold text-gray-900 mb-3">Good: Group steps within a function</h4>
-                <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
-                  <pre className="text-sm font-mono">
-{`from typing import Dict
-
-def handle_checkout(payload: Dict) -> Dict:
-    """One unit of logic with clear step grouping."""
-    # validate input (step 1)
-    if 'items' not in payload or not payload['items']:
-        return {'status': 'error', 'message': 'no items'}
-
-    # transform (step 2)
-    total = sum(item['price'] * item.get('qty', 1) for item in payload['items'])
-
-    # return (step 3)
-    return {'status': 'ok', 'total': round(total, 2)}`}
-                  </pre>
-                </div>
+                <CodeBlock src="/code/visual_hierarchy_good.py" title="/public/code/visual_hierarchy_good.py" />
                 <p className="text-sm text-gray-600 mt-3">
                   Blank lines separate validation, transformation, and return. This creates visual hierarchy inside a single unit of logic.
                 </p>
@@ -251,20 +241,7 @@ def handle_checkout(payload: Dict) -> Dict:
 
               <div>
                 <h4 className="text-lg font-semibold text-gray-900 mb-3">Poor: No grouping inside the function</h4>
-                <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
-                  <pre className="text-sm font-mono">
-{`from typing import Dict
-
-def handle_checkout(payload: Dict) -> Dict:
-    # validation, transform, and return mashed together
-    if 'items' not in payload or not payload['items']:
-        return {'status': 'error', 'message': 'no items'}
-    total = 0
-    for item in payload['items']:
-        total += item['price'] * item.get('qty', 1)
-    return {'status': 'ok', 'total': round(total, 2)}`}
-                  </pre>
-                </div>
+                <CodeBlock src="/code/visual_hierarchy_poor.py" title="/public/code/visual_hierarchy_poor.py" />
                 <p className="text-sm text-gray-600 mt-3">
                   With no spacing between conceptual steps, the function is harder to scan and reason about.
                 </p>

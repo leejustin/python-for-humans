@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import CodeBlock from '@/components/CodeBlock'
 import { ChevronDown, ChevronRight } from 'lucide-react'
 
 export default function ProgressiveDisclosure() {
@@ -60,8 +61,8 @@ export default function ProgressiveDisclosure() {
                   className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
                 >
                   <div>
-                    <h3 className="font-semibold text-gray-900">Project Overview</h3>
-                    <p className="text-sm text-gray-600 mt-1">Basic information about the project</p>
+                    <h3 className="font-semibold text-gray-900">Trip Overview</h3>
+                    <p className="text-sm text-gray-600 mt-1">Basic information about the trip</p>
                   </div>
                   {expandedSections.has('section1') ? (
                     <ChevronDown className="w-5 h-5 text-gray-400" />
@@ -74,17 +75,16 @@ export default function ProgressiveDisclosure() {
                   <div className="px-6 pb-4 border-t border-gray-100">
                     <div className="pt-4 space-y-3">
                       <p className="text-gray-700">
-                        This project aims to create a comprehensive design system that can be used across 
-                        multiple products and platforms. The system includes components, patterns, and guidelines.
+                        Traveling to PyCon. Keep packing focused: essentials, tech, and documents. Add extras only if necessary.
                       </p>
                       <div className="grid grid-cols-2 gap-4 text-sm">
                         <div>
-                          <span className="font-medium text-gray-900">Timeline:</span>
-                          <span className="text-gray-600 ml-2">6 months</span>
+                          <span className="font-medium text-gray-900">Dates:</span>
+                          <span className="text-gray-600 ml-2">September 19–22, 2025</span>
                         </div>
                         <div>
-                          <span className="font-medium text-gray-900">Team Size:</span>
-                          <span className="text-gray-600 ml-2">8 people</span>
+                          <span className="font-medium text-gray-900">Travelers:</span>
+                          <span className="text-gray-600 ml-2">1 person</span>
                         </div>
                       </div>
                     </div>
@@ -99,8 +99,8 @@ export default function ProgressiveDisclosure() {
                   className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
                 >
                   <div>
-                    <h3 className="font-semibold text-gray-900">Technical Requirements</h3>
-                    <p className="text-sm text-gray-600 mt-1">Detailed technical specifications</p>
+                    <h3 className="font-semibold text-gray-900">Packing Categories</h3>
+                    <p className="text-sm text-gray-600 mt-1">Group items by purpose</p>
                   </div>
                   {expandedSections.has('section2') ? (
                     <ChevronDown className="w-5 h-5 text-gray-400" />
@@ -113,21 +113,21 @@ export default function ProgressiveDisclosure() {
                   <div className="px-6 pb-4 border-t border-gray-100">
                     <div className="pt-4 space-y-3">
                       <div>
-                        <h4 className="font-medium text-gray-900 mb-2">Frontend Stack</h4>
+                        <h4 className="font-medium text-gray-900 mb-2">Categories</h4>
                         <ul className="text-sm text-gray-700 space-y-1">
-                          <li>• React 18+ with TypeScript</li>
-                          <li>• TailwindCSS for styling</li>
-                          <li>• Storybook for component documentation</li>
-                          <li>• Jest and React Testing Library</li>
+                          <li>• Essentials (passport, badge, wallet)</li>
+                          <li>• Tech (laptop, chargers, adapters)</li>
+                          <li>• Clothing (layers, comfortable shoes)</li>
+                          <li>• Documents (tickets, hotel, schedule)</li>
                         </ul>
                       </div>
                       <div>
-                        <h4 className="font-medium text-gray-900 mb-2">Backend Requirements</h4>
+                        <h4 className="font-medium text-gray-900 mb-2">Travel Docs</h4>
                         <ul className="text-sm text-gray-700 space-y-1">
-                          <li>• Node.js with Express</li>
-                          <li>• PostgreSQL database</li>
-                          <li>• Redis for caching</li>
-                          <li>• Docker for containerization</li>
+                          <li>• Passport / ID</li>
+                          <li>• Visa (if needed)</li>
+                          <li>• Flight + train tickets</li>
+                          <li>• Hotel confirmation</li>
                         </ul>
                       </div>
                     </div>
@@ -142,8 +142,8 @@ export default function ProgressiveDisclosure() {
                   className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
                 >
                   <div>
-                    <h3 className="font-semibold text-gray-900">Design Guidelines</h3>
-                    <p className="text-sm text-gray-600 mt-1">Visual and interaction standards</p>
+                    <h3 className="font-semibold text-gray-900">Packing Tips</h3>
+                    <p className="text-sm text-gray-600 mt-1">Lightweight rules to avoid overpacking</p>
                   </div>
                   {expandedSections.has('section3') ? (
                     <ChevronDown className="w-5 h-5 text-gray-400" />
@@ -156,22 +156,20 @@ export default function ProgressiveDisclosure() {
                   <div className="px-6 pb-4 border-t border-gray-100">
                     <div className="pt-4 space-y-3">
                       <div>
-                        <h4 className="font-medium text-gray-900 mb-2">Color Palette</h4>
-                        <div className="flex space-x-2">
-                          <div className="w-8 h-8 bg-blue-500 rounded"></div>
-                          <div className="w-8 h-8 bg-green-500 rounded"></div>
-                          <div className="w-8 h-8 bg-red-500 rounded"></div>
-                          <div className="w-8 h-8 bg-yellow-500 rounded"></div>
-                        </div>
+                        <h4 className="font-medium text-gray-900 mb-2">Carry-on First</h4>
+                        <ul className="text-sm text-gray-700 space-y-1">
+                          <li>• Keep essentials in carry-on</li>
+                          <li>• Pack chargers and adapters together</li>
+                          <li>• Print docs or save offline</li>
+                        </ul>
                       </div>
                       <div>
-                        <h4 className="font-medium text-gray-900 mb-2">Typography Scale</h4>
-                        <div className="space-y-1 text-sm">
-                          <div className="text-2xl font-bold">Heading 1</div>
-                          <div className="text-xl font-semibold">Heading 2</div>
-                          <div className="text-lg font-medium">Heading 3</div>
-                          <div className="text-base">Body text</div>
-                        </div>
+                        <h4 className="font-medium text-gray-900 mb-2">Outfit Planning</h4>
+                        <ul className="text-sm text-gray-700 space-y-1">
+                          <li>• Pack layers, not bulk</li>
+                          <li>• Comfortable shoes for long days</li>
+                          <li>• Leave room for swag</li>
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -181,15 +179,15 @@ export default function ProgressiveDisclosure() {
 
             {/* Modal Example */}
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2 text-center">Modal Dialog</h2>
-              <p className="text-gray-600 text-center mb-6">Show detailed information in an overlay</p>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2 text-center">Trip Details</h2>
+              <p className="text-gray-600 text-center mb-6">Expanded details about your PyCon trip</p>
               
               <div className="flex justify-center">
                 <button
                   onClick={() => setShowModal(true)}
                   className="px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
                 >
-                  View Project Details
+                  View Trip Details
                 </button>
               </div>
 
@@ -197,7 +195,7 @@ export default function ProgressiveDisclosure() {
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                   <div className="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto">
                     <div className="flex justify-between items-start mb-6">
-                      <h3 className="text-2xl font-bold text-gray-900">Project Details</h3>
+                      <h3 className="text-2xl font-bold text-gray-900">Trip Details</h3>
                       <button
                         onClick={() => setShowModal(false)}
                         className="text-gray-400 hover:text-gray-600 text-2xl"
@@ -208,20 +206,19 @@ export default function ProgressiveDisclosure() {
                     
                     <div className="space-y-6">
                       <div>
-                        <h4 className="font-semibold text-gray-900 mb-2">Project Goals</h4>
+                        <h4 className="font-semibold text-gray-900 mb-2">Trip Goals</h4>
                         <p className="text-gray-700">
-                          Create a unified design system that improves consistency across all products, 
-                          reduces development time, and enhances user experience through standardized components.
+                          Attend talks, meet the community, and keep packing lean and intentional.
                         </p>
                       </div>
                       
                       <div>
-                        <h4 className="font-semibold text-gray-900 mb-2">Success Metrics</h4>
+                        <h4 className="font-semibold text-gray-900 mb-2">Checklist Essentials</h4>
                         <ul className="text-gray-700 space-y-1">
-                          <li>• 50% reduction in design-to-development time</li>
-                          <li>• 90% component reuse across products</li>
-                          <li>• Improved accessibility scores (WCAG 2.1 AA)</li>
-                          <li>• Positive developer feedback (4.5+ rating)</li>
+                          <li>• Passport / ID</li>
+                          <li>• Conference badge</li>
+                          <li>• Laptop + chargers</li>
+                          <li>• Tickets / hotel info</li>
                         </ul>
                       </div>
                       
@@ -229,20 +226,16 @@ export default function ProgressiveDisclosure() {
                         <h4 className="font-semibold text-gray-900 mb-2">Timeline</h4>
                         <div className="space-y-2 text-sm">
                           <div className="flex justify-between">
-                            <span className="text-gray-600">Research & Planning</span>
-                            <span className="text-gray-900">Weeks 1-2</span>
+                            <span className="text-gray-600">Travel</span>
+                            <span className="text-gray-900">September 19, 2025</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-gray-600">Design & Prototyping</span>
-                            <span className="text-gray-900">Weeks 3-8</span>
+                            <span className="text-gray-600">Conference days</span>
+                            <span className="text-gray-900">September 20–21, 2025</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-gray-600">Development</span>
-                            <span className="text-gray-900">Weeks 9-20</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-gray-600">Testing & Documentation</span>
-                            <span className="text-gray-900">Weeks 21-24</span>
+                            <span className="text-gray-600">Return</span>
+                            <span className="text-gray-900">September 22, 2025</span>
                           </div>
                         </div>
                       </div>
@@ -382,32 +375,7 @@ export default function ProgressiveDisclosure() {
             <div className="space-y-6">
               <div>
                 <h4 className="text-lg font-semibold text-gray-900 mb-3">Good: Decorator Pattern</h4>
-                <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
-                  <pre className="text-sm font-mono">
-{`# Simple interface - complexity hidden
-@with_timer
-@with_logging
-def process_data(data):
-    return data.upper()
-
-# Implementation details hidden in decorators
-def with_timer(func):
-    def wrapper(*args, **kwargs):
-        start = time.time()
-        result = func(*args, **kwargs)
-        print(f"Time: {time.time() - start:.2f}s")
-        return result
-    return wrapper
-
-def with_logging(func):
-    def wrapper(*args, **kwargs):
-        print(f"Calling {func.__name__}")
-        result = func(*args, **kwargs)
-        print(f"Completed {func.__name__}")
-        return result
-    return wrapper`}
-                  </pre>
-                </div>
+                <CodeBlock src="/code/progressive_disclosure_good.py" title="/public/code/progressive_disclosure_good.py" />
                 <p className="text-sm text-gray-600 mt-3">
                   The main function is simple and clean. Complex functionality (timing, logging) 
                   is hidden in decorators, revealed only when needed.
@@ -416,29 +384,7 @@ def with_logging(func):
 
               <div>
                 <h4 className="text-lg font-semibold text-gray-900 mb-3">Poor: Everything Exposed</h4>
-                <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
-                  <pre className="text-sm font-mono">
-{`# Everything visible at once - overwhelming
-def process_data(data):
-    # Timing code
-    start_time = time.time()
-    
-    # Logging code
-    print(f"Calling process_data with {len(data)} items")
-    
-    # Main logic
-    result = data.upper()
-    
-    # More logging
-    print(f"Completed process_data")
-    
-    # More timing
-    end_time = time.time()
-    print(f"Time: {end_time - start_time:.2f}s")
-    
-    return result`}
-                  </pre>
-                </div>
+                <CodeBlock src="/code/progressive_disclosure_poor.py" title="/public/code/progressive_disclosure_poor.py" />
                 <p className="text-sm text-gray-600 mt-3">
                   All implementation details are mixed together, making it hard to focus on 
                   the core logic. Like a cluttered UI, it overwhelms the reader.

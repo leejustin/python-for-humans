@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import CodeBlock from '@/components/CodeBlock'
 
 export default function Standardization() {
   const [showInconsistent, setShowInconsistent] = useState(false)
@@ -289,6 +290,17 @@ export default function Standardization() {
           </div>
         </div>
 
+        {/* Tooling snippet as automated consistency */}
+        <div className="bg-white border-2 border-gray-200 rounded-lg p-8 space-y-4">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Automated Consistency (Tools)</h2>
+            <p className="text-gray-600">Formatter and linter configuration</p>
+          </div>
+          <div>
+            <CodeBlock src="/code/standardization_pyproject_snippet.toml" title="pyproject.toml (excerpt)" />
+          </div>
+        </div>
+
         <div className="bg-gray-50 rounded-lg p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Standardization Benefits</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -335,39 +347,7 @@ export default function Standardization() {
             <div className="space-y-6">
               <div>
                 <h4 className="text-lg font-semibold text-gray-900 mb-3">Good: Consistent Formatting</h4>
-                <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
-                  <pre className="text-sm font-mono">
-{`# Consistent formatting with black
-def calculate_total(items: List[Item]) -> float:
-    """Calculate the total price of items."""
-    total = 0.0
-    for item in items:
-        total += item.price * item.quantity
-    return total
-
-def process_order(order: Order) -> OrderResult:
-    """Process a customer order."""
-    validated_items = validate_items(order.items)
-    total = calculate_total(validated_items)
-    return OrderResult(items=validated_items, total=total)
-
-def send_confirmation_email(order: Order) -> bool:
-    """Send order confirmation email."""
-    email_content = format_order_email(order)
-    return email_service.send(order.customer.email, email_content)
-
-# Consistent naming, spacing, and structure
-class OrderProcessor:
-    def __init__(self, email_service: EmailService):
-        self.email_service = email_service
-    
-    def process(self, order: Order) -> OrderResult:
-        """Main processing method."""
-        result = process_order(order)
-        self.email_service.send_confirmation(order)
-        return result`}
-                  </pre>
-                </div>
+                <CodeBlock src="/code/standardization_good.py" title="/public/code/standardization_good.py" />
                 <p className="text-sm text-gray-600 mt-3">
                   Code follows consistent formatting, naming conventions, and structure. 
                   Like a standardized design system, it creates predictability and reduces cognitive load.
@@ -376,35 +356,7 @@ class OrderProcessor:
 
               <div>
                 <h4 className="text-lg font-semibold text-gray-900 mb-3">Poor: Inconsistent Formatting</h4>
-                <div className="bg-gray-900 text-gray-100 p-6 rounded-lg overflow-x-auto">
-                  <pre className="text-sm font-mono">
-{`# Inconsistent formatting and style
-def calculateTotal(items):  # Different naming convention
-    total=0  # No spaces around operators
-    for item in items:
-        total+=item.price*item.quantity  # No spaces
-    return total
-
-def processOrder(order):  # Different naming
-    validatedItems=validateItems(order.items)  # Different naming
-    total=calculateTotal(validatedItems)  # Inconsistent spacing
-    return OrderResult(items=validatedItems,total=total)  # No spaces
-
-def sendConfirmationEmail(order):  # Different naming
-    emailContent=formatOrderEmail(order)  # Different naming
-    return emailService.send(order.customer.email,emailContent)  # No spaces
-
-# Inconsistent class structure
-class OrderProcessor:
-    def __init__(self,emailService):  # No spaces
-        self.emailService=emailService  # Different naming
-    
-    def Process(self,order):  # Different method naming
-        result=processOrder(order)  # Inconsistent spacing
-        self.emailService.sendConfirmation(order)  # Different naming
-        return result`}
-                  </pre>
-                </div>
+                <CodeBlock src="/code/standardization_poor.py" title="/public/code/standardization_poor.py" />
                 <p className="text-sm text-gray-600 mt-3">
                   Code has inconsistent formatting, naming conventions, and spacing. 
                   Like an inconsistent design system, it creates visual noise and makes the code harder to read.

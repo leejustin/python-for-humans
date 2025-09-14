@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import CodeBlock from '@/components/CodeBlock'
 
 export default function Simplicity() {
   const [showOverdesigned, setShowOverdesigned] = useState(false)
@@ -244,6 +245,18 @@ export default function Simplicity() {
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+
+        {/* Python examples loaded from files */}
+        <div className="bg-white border-2 border-gray-200 rounded-lg p-8 space-y-6">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Python Examples</h2>
+            <p className="text-gray-600">Clear loops vs clever one-liners</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <CodeBlock src="/code/simplicity_good.py" title="/public/code/simplicity_good.py" />
+            <CodeBlock src="/code/simplicity_poor.py" title="/public/code/simplicity_poor.py" />
           </div>
         </div>
 

@@ -1,10 +1,29 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import CodeBlock from '@/components/CodeBlock'
 
 export default function ScanningPatterns() {
   const [showBadExample, setShowBadExample] = useState(false)
   const [showPythonCode, setShowPythonCode] = useState(false)
+  const [goodCode, setGoodCode] = useState<string | null>(null)
+  const [badCode, setBadCode] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (!showPythonCode) return
+    if (!goodCode) {
+      fetch('/code/scanning_patterns_good.py')
+        .then((r) => r.text())
+        .then((t) => setGoodCode(t))
+        .catch(() => setGoodCode('# Failed to load example'))
+    }
+    if (!badCode) {
+      fetch('/code/scanning_patterns_poor.py')
+        .then((r) => r.text())
+        .then((t) => setBadCode(t))
+        .catch(() => setBadCode('# Failed to load example'))
+    }
+  }, [showPythonCode, goodCode, badCode])
 
   return (
     <div className="space-y-12">
@@ -190,34 +209,17 @@ export default function ScanningPatterns() {
             </div>
             
             <div className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <CodeBlock src="/code/scanning_package_tree.txt" title="Package layout (good layout)" />
+                <CodeBlock src="/code/scanning_package___init__good.py" title="pycon_packing/__init__.py (export entry points)" />
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <h4 className="text-lg font-semibold text-gray-900">Good</h4>
                     <span className="text-xs font-medium text-green-800 bg-green-100 border border-green-200 px-2 py-1 rounded">Main (entry point) at top</span>
                   </div>
-                  <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
-                    <pre className="text-sm font-mono">
-{`import os
-
-# module constants
-ENV_VAR = "DATA"
-DEFAULT_DATA = "data"
-
-def main():  # entry point
-    data = load()
-    return process(data)
-
-def load() -> str:
-    return os.getenv(ENV_VAR, DEFAULT_DATA)
-
-def process(d: str) -> str:
-    return d.upper()
-
-if __name__ == "__main__":
-    main()`}
-                    </pre>
-                  </div>
+                  <CodeBlock src="/code/scanning_patterns_good.py" title="/public/code/scanning_patterns_good.py" />
                 </div>
 
                 <div>
@@ -225,28 +227,7 @@ if __name__ == "__main__":
                     <h4 className="text-lg font-semibold text-gray-900">Poor</h4>
                     <span className="text-xs font-medium text-red-800 bg-red-100 border border-red-200 px-2 py-1 rounded">Main (entry point) at bottom</span>
                   </div>
-                  <div className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto">
-                    <pre className="text-sm font-mono">
-{`import os
-
-def load() -> str:
-    return os.getenv(ENV_VAR, DEFAULT_DATA)
-
-def process(d: str) -> str:
-    return d.upper()
-
-# constants defined away from the top (poor practice)
-ENV_VAR = "DATA"
-DEFAULT_DATA = "data"
-
-def main():  # entry point
-    data = load()
-    return process(data)
-
-if __name__ == "__main__":
-    main()`}
-                    </pre>
-                  </div>
+                  <CodeBlock src="/code/scanning_patterns_poor.py" title="/public/code/scanning_patterns_poor.py" />
                 </div>
               </div>
               <p className="text-sm text-gray-600">
